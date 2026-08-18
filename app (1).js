@@ -608,9 +608,76 @@ document
 // ===============================
 // INICIAR TIENDA
 // ===============================
+// ===============================
+// MÁS VENDIDOS
+// ===============================
+
+const bestSellerIds = [19, 21, 33, 51, 42, 55, 65, 67];
+
+function renderBestSellers() {
+  const grid = document.getElementById("bestSellersGrid");
+
+  if (!grid) return;
+
+  const bestSellers = bestSellerIds
+    .map(id => products.find(p => p.id === id))
+    .filter(Boolean);
+
+  grid.innerHTML = bestSellers.map(p => `
+    <article class="card">
+
+      <img
+        class="photo"
+        src="${p.image}"
+        alt="${p.name}"
+        loading="lazy"
+      >
+
+      <div class="card-body">
+
+        <div class="tag">
+          ${p.category.toUpperCase()}
+        </div>
+
+        <h3>${p.name}</h3>
+
+        <div class="desc">
+          ${p.description}
+        </div>
+
+        <div class="price-row">
+
+          <span class="price">
+            ${p.price === null ? "Consultar" : money(p.price)}
+          </span>
+
+          <button
+            class="add"
+            onclick="${p.price === null
+              ? `consultProduct(${p.id})`
+              : `addToCart(${p.id})`
+            }"
+          >
+            ${p.price === null ? "Consultar" : "Agregar"}
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+  `).join("");
+}
+
+
+// ===============================
+// INICIAR TIENDA
+// ===============================
 
 categories();
 
 renderProducts();
+
+renderBestSellers();
 
 renderCart();
