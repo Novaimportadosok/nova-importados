@@ -1,16 +1,17 @@
 // ===============================
 // NOVA IMPORTADOS - CONFIGURACIÓN
 // ===============================
-// IMPORTANTE: reemplazá este número por el WhatsApp del negocio.
-// Formato: código de país + número, sin +, espacios ni guiones.
-// Ejemplo Argentina: 5493511234567
+
 const WHATSAPP_NUMBER = "5493543313011";
 
 const INSTAGRAM_URL = "https://www.instagram.com/novaimportados.ok/";
 
-// Agregá, quitá o modificá productos en esta lista.
+// ===============================
+// PRODUCTOS
+// ===============================
+
 const products = [
-        {id:1,name:"Art of Universe",category:"Lattafa",price:72000,price2:70000,price3:68000,image:"https://placehold.co/700x700/f0ede5/333?text=Art+of+Universe",description:"Fragancia seleccionada."},
+  {id:1,name:"Art of Universe",category:"Lattafa",price:72000,price2:70000,price3:68000,image:"https://placehold.co/700x700/f0ede5/333?text=Art+of+Universe",description:"Fragancia seleccionada."},
   {id:2,name:"Asad Bourbon",category:"Lattafa",price:70000,price2:69000,price3:67000,image:"https://placehold.co/700x700/f0ede5/333?text=Asad+Bourbon",description:"Fragancia intensa y sofisticada."},
   {id:3,name:"Asad Negro",category:"Lattafa",price:60000,price2:58000,price3:55000,image:"https://placehold.co/700x700/e9eee5/333?text=Asad+Negro",description:"Aroma elegante y de gran presencia."},
   {id:4,name:"Asad Elixir",category:"Lattafa",price:62000,price2:60000,price3:59000,image:"https://placehold.co/700x700/eee8df/333?text=Asad+Elixir",description:"Fragancia intensa y especial."},
@@ -88,89 +89,92 @@ const products = [
   {id:68,name:"Jean Paul Gaultier Scandal Pour Homme Absolu Parfum 100ml",category:"Diseñador",price:210000,price2:202000,price3:194000,image:"https://placehold.co/700x700/f0ede5/333?text=Scandal+Absolu",description:"Fragancia Jean Paul Gaultier."},
   {id:69,name:"Emporio Armani Stronger With You Intensely EDP 100ml",category:"Diseñador",price:300000,price2:290000,price3:250000,image:"https://placehold.co/700x700/e9eee5/333?text=Stronger+With+You",description:"Fragancia Emporio Armani."},
   {id:70,name:"Versace Eros Flame EDP 100ml",category:"Diseñador",price:160000,price2:155000,price3:152000,image:"https://placehold.co/700x700/eee8df/333?text=Eros+Flame",description:"Fragancia Versace."},
- {id:71,name:"Montale Arabians Tonka EDP",category:"Diseñador",price:295000,price2:288000,price3:null,image:"https://placehold.co/700x700/e5eee7/333?text=Arabians+Tonka",description:"Fragancia Montale."}
+  {id:71,name:"Montale Arabians Tonka EDP",category:"Diseñador",price:295000,price2:288000,price3:null,image:"https://placehold.co/700x700/e5eee7/333?text=Arabians+Tonka",description:"Fragancia Montale."}
 ];
+
 // ===============================
-// IMÁGENES REALES DEL CATÁLOGO
+// IMÁGENES REALES
 // ===============================
 
 const imageFiles = {
-  1: "01-art-of-universe.jpeg",
-  2: "02-asad-bourbon.jpeg",
-  3: "03-asad-negro.jpeg",
-  4: "04-asad-elixir.jpeg",
-  5: "05-asad-zanzibar.jpeg",
-  6: "06-badee-al-oud-amethyst.jpeg",
-  7: "07-badee-al-oud-for-glory.jpeg",
-  8: "08-badee-al-oud-honor-and-glory.jpeg",
-  9: "09-badee-al-oud-noble-blush.jpeg",
-  10: "10-badee-al-oud-sublime.jpeg",
-  11: "11-eclaire.jpeg",
-  12: "12-fakhar-gold.jpeg",
-  13: "13-fakhar-masculino.jpeg",
-  14: "14-fakhar-femenino.jpeg",
-  15: "15-hayaati-negro.jpeg",
-  16: "16-hayaatim.jpeg",
-  17: "17-her-confession.jpeg",
-  18: "18-his-confession.jpeg",
-  19: "19-khamrah.jpeg",
-  20: "20-khamrah-dukhan.jpeg",
-  21: "21-khamrah-qahwa.jpeg",
-  22: "22-kit-asad-asad-zanzibar.jpeg",
-  23: "23-kit-yara-yara-candy.jpeg",
-  24: "24-mayar.jpeg",
-  25: "25-musamam-white.jpeg",
-  26: "26-nebras.jpeg",
-  27: "27-qaed-al-fursan.jpeg",
-  28: "28-qaed-al-fursan-unlimited.jpeg",
-  29: "29-teriaq-femenino.jpeg",
-  30: "30-the-kingdom-femenino.jpeg",
-  31: "31-the-kingdom-masculino.jpeg",
-  32: "32-vintage-radio.jpeg",
-  33: "33-yara-candy.jpeg",
-  34: "34-yara-moi.jpeg",
-  35: "35-yara-rosa.jpeg",
-  36: "36-yara-elixir.jpeg",
-  37: "37-yara-tous.jpeg",
-  38: "38-royal-amber.jpeg",
-  39: "39-liquid-brun.jpeg",
-  40: "40-vulcan-feu.jpeg",
-  41: "41-club-de-nuit-iconic.jpeg",
-  42: "42-club-de-nuit-intense-man.jpeg",
-  43: "43-club-de-nuit-untold.jpeg",
-  44: "44-club-de-nuit-urban-man-elixir.jpeg",
-  45: "45-club-de-nuit-woman.jpeg",
-  46: "46-odyssey-candee.jpeg",
-  47: "47-odyssey-mandarin-sky.jpeg",
-  48: "48-odyssey-mega-limited-edition.jpeg",
-  49: "49-yum-yum-delights.jpeg",
-  50: "50-9am-dive.jpeg",
-  51: "51-9pm.jpeg",
-  52: "52-9pm-elixir.jpeg",
-  53: "53-9pm-night-out.jpeg",
-  54: "54-9pm-rebel.jpeg",
-  55: "55-amber-oud-gold-edition-120ml.jpeg",
-  56: "56-amber-oud-dubai-night.jpeg",
-  57: "57-amber-oud-aqua-dubai.jpeg",
-  58: "58-bharara-king-100ml.jpeg",
-  59: "59-bharara-king-150ml.jpeg",
-  60: "60-bharara-king-parfum.jpeg",
-  61: "61-hawas-ice.jpeg",
-  62: "62-hawas-for-him.jpeg",
-  63: "63-hawas-malibu.jpeg",
-  64: "64-salvo-intense.jpeg",
-  65: "65-la-vie-est-belle-lancome-100ml.jpeg",
-  66: "66-jean-paul-gaultier-le-male-le-parfum-intense-125ml.jpeg",
-  67: "67-jean-paul-gaultier-le-male-elixir-125ml.jpeg",
-  68: "68-jean-paul-gaultier-scandal-pour-homme-absolu-parfum-100ml.jpeg",
-  69: "69-emporio-armani-stronger-with-you-intensely-edp-100ml.jpeg",
-  70: "70-versace-eros-flame-edp-100ml.jpeg",
-  71: "71-montale-arabians-tonka-edp.jpeg"
+  1:"01-art-of-universe.jpeg",
+  2:"02-asad-bourbon.jpeg",
+  3:"03-asad-negro.jpeg",
+  4:"04-asad-elixir.jpeg",
+  5:"05-asad-zanzibar.jpeg",
+  6:"06-badee-al-oud-amethyst.jpeg",
+  7:"07-badee-al-oud-for-glory.jpeg",
+  8:"08-badee-al-oud-honor-and-glory.jpeg",
+  9:"09-badee-al-oud-noble-blush.jpeg",
+  10:"10-badee-al-oud-sublime.jpeg",
+  11:"11-eclaire.jpeg",
+  12:"12-fakhar-gold.jpeg",
+  13:"13-fakhar-masculino.jpeg",
+  14:"14-fakhar-femenino.jpeg",
+  15:"15-hayaati-negro.jpeg",
+  16:"16-hayaatim.jpeg",
+  17:"17-her-confession.jpeg",
+  18:"18-his-confession.jpeg",
+  19:"19-khamrah.jpeg",
+  20:"20-khamrah-dukhan.jpeg",
+  21:"21-khamrah-qahwa.jpeg",
+  22:"22-kit-asad-asad-zanzibar.jpeg",
+  23:"23-kit-yara-yara-candy.jpeg",
+  24:"24-mayar.jpeg",
+  25:"25-musamam-white.jpeg",
+  26:"26-nebras.jpeg",
+  27:"27-qaed-al-fursan.jpeg",
+  28:"28-qaed-al-fursan-unlimited.jpeg",
+  29:"29-teriaq-femenino.jpeg",
+  30:"30-the-kingdom-femenino.jpeg",
+  31:"31-the-kingdom-masculino.jpeg",
+  32:"32-vintage-radio.jpeg",
+  33:"33-yara-candy.jpeg",
+  34:"34-yara-moi.jpeg",
+  35:"35-yara-rosa.jpeg",
+  36:"36-yara-elixir.jpeg",
+  37:"37-yara-tous.jpeg",
+  38:"38-royal-amber.jpeg",
+  39:"39-liquid-brun.jpeg",
+  40:"40-vulcan-feu.jpeg",
+  41:"41-club-de-nuit-iconic.jpeg",
+  42:"42-club-de-nuit-intense-man.jpeg",
+  43:"43-club-de-nuit-untold.jpeg",
+  44:"44-club-de-nuit-urban-man-elixir.jpeg",
+  45:"45-club-de-nuit-woman.jpeg",
+  46:"46-odyssey-candee.jpeg",
+  47:"47-odyssey-mandarin-sky.jpeg",
+  48:"48-odyssey-mega-limited-edition.jpeg",
+  49:"49-yum-yum-delights.jpeg",
+  50:"50-9am-dive.jpeg",
+  51:"51-9pm.jpeg",
+  52:"52-9pm-elixir.jpeg",
+  53:"53-9pm-night-out.jpeg",
+  54:"54-9pm-rebel.jpeg",
+  55:"55-amber-oud-gold-edition-120ml.jpeg",
+  56:"56-amber-oud-dubai-night.jpeg",
+  57:"57-amber-oud-aqua-dubai.jpeg",
+  58:"58-bharara-king-100ml.jpeg",
+  59:"59-bharara-king-150ml.jpeg",
+  60:"60-bharara-king-parfum.jpeg",
+  61:"61-hawas-ice.jpeg",
+  62:"62-hawas-for-him.jpeg",
+  63:"63-hawas-malibu.jpeg",
+  64:"64-salvo-intense.jpeg",
+  65:"65-la-vie-est-belle-lancome-100ml.jpeg",
+  66:"66-jean-paul-gaultier-le-male-le-parfum-intense-125ml.jpeg",
+  67:"67-jean-paul-gaultier-le-male-elixir-125ml.jpeg",
+  68:"68-jean-paul-gaultier-scandal-pour-homme-absolu-parfum-100ml.jpeg",
+  69:"69-emporio-armani-stronger-with-you-intensely-edp-100ml.jpeg",
+  70:"70-versace-eros-flame-edp-100ml.jpeg",
+  71:"71-montale-arabians-tonka-edp.jpeg"
 };
 
+// ===============================
+// ASIGNAR IMÁGENES
+// ===============================
+
 products.forEach(product => {
-  if (imageFiles[product.id]) {
-    product.image = products.forEach(product => {
   if (imageFiles[product.id]) {
     product.image = `images/${imageFiles[product.id]}`;
   }
@@ -178,31 +182,71 @@ products.forEach(product => {
 
 console.log("PRODUCTOS CARGADOS:", products.length);
 
-let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");`images/${imageFiles[product.id]}`;
-  }
-});
+// ===============================
+// CARRITO
+// ===============================
+
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
 
 let activeCategory = "Todos";
 let searchTerm = "";
 let sortOrder = "default";
-const money = n => "$ " + Number(n).toLocaleString("es-AR");
-const save = () => localStorage.setItem("novaCart", JSON.stringify(cart));
 
-function categories(){
-  const cats = ["Todos", ...new Set(products.map(p=>p.category))];
-  document.getElementById("filters").innerHTML = cats.map(c =>
-    `<button class="filter ${c===activeCategory?"active":""}" onclick="setCategory('${c}')">${c}</button>`
-  ).join("");
+const money = n =>
+  "$ " + Number(n).toLocaleString("es-AR");
+
+const save = () =>
+  localStorage.setItem("novaCart", JSON.stringify(cart));
+
+// ===============================
+// CATEGORÍAS
+// ===============================
+
+function categories() {
+
+  const cats = [
+    "Todos",
+    ...new Set(products.map(p => p.category))
+  ];
+
+  const filters = document.getElementById("filters");
+
+  if (!filters) return;
+
+  filters.innerHTML = cats.map(c => `
+    <button
+      class="filter ${c === activeCategory ? "active" : ""}"
+      onclick="setCategory('${c}')"
+    >
+      ${c}
+    </button>
+  `).join("");
 }
 
-function setCategory(cat){ activeCategory=cat; categories(); renderProducts(); }
-function renderProducts(){
-  let list = activeCategory === "Todos"
-    ? [...products]
-    : products.filter(p => p.category === activeCategory);
+function setCategory(cat) {
 
-  if(searchTerm){
+  activeCategory = cat;
+
+  categories();
+
+  renderProducts();
+}
+
+// ===============================
+// MOSTRAR PRODUCTOS
+// ===============================
+
+function renderProducts() {
+
+  let list =
+    activeCategory === "Todos"
+      ? [...products]
+      : products.filter(
+          p => p.category === activeCategory
+        );
+
+  if (searchTerm) {
+
     const term = searchTerm.toLowerCase();
 
     list = list.filter(p =>
@@ -212,43 +256,58 @@ function renderProducts(){
     );
   }
 
-  if(sortOrder === "az"){
-    list.sort((a,b) => a.name.localeCompare(b.name));
-  }
-
-  if(sortOrder === "za"){
-    list.sort((a,b) => b.name.localeCompare(a.name));
-  }
-
-  if(sortOrder === "low"){
+  if (sortOrder === "az") {
     list.sort((a,b) =>
-      (a.price ?? Infinity) - (b.price ?? Infinity)
+      a.name.localeCompare(b.name)
     );
   }
 
-  if(sortOrder === "high"){
+  if (sortOrder === "za") {
     list.sort((a,b) =>
-      (b.price ?? -1) - (a.price ?? -1)
+      b.name.localeCompare(a.name)
     );
   }
 
-  const grid = document.getElementById("productGrid");
+  if (sortOrder === "low") {
+    list.sort((a,b) =>
+      (a.price ?? Infinity) -
+      (b.price ?? Infinity)
+    );
+  }
 
-  if(!grid) return;
+  if (sortOrder === "high") {
+    list.sort((a,b) =>
+      (b.price ?? -1) -
+      (a.price ?? -1)
+    );
+  }
 
-  if(!list.length){
-    grid.innerHTML =
-      `<div class="empty">No encontramos perfumes con esa búsqueda.</div>`;
+  const grid =
+    document.getElementById("productGrid");
+
+  if (!grid) return;
+
+  if (!list.length) {
+
+    grid.innerHTML = `
+      <div class="empty">
+        No encontramos perfumes con esa búsqueda.
+      </div>
+    `;
+
     return;
   }
 
   grid.innerHTML = list.map(p => `
+
     <article class="card">
+
       <img
         class="photo"
         src="${p.image}"
         alt="${p.name}"
         loading="lazy"
+        onerror="this.src='https://placehold.co/700x700/f0ede5/333?text=Sin+imagen'"
       >
 
       <div class="card-body">
@@ -266,111 +325,179 @@ function renderProducts(){
         <div class="price-row">
 
           <span class="price">
-            ${p.price === null ? "Consultar" : money(p.price)}
+            ${
+              p.price === null
+                ? "Consultar"
+                : money(p.price)
+            }
           </span>
 
           <button
             class="add"
-            onclick="${p.price === null
-              ? `consultProduct(${p.id})`
-              : `addToCart(${p.id})`
+            onclick="${
+              p.price === null
+                ? `consultProduct(${p.id})`
+                : `addToCart(${p.id})`
             }"
           >
-            ${p.price === null ? "Consultar" : "Agregar"}
+            ${
+              p.price === null
+                ? "Consultar"
+                : "Agregar"
+            }
           </button>
 
         </div>
 
       </div>
+
     </article>
+
   `).join("");
 }
-function consultProduct(id){
-  const p = products.find(x => x.id === id);
 
-  if(!p) return;
+// ===============================
+// CONSULTAR PRODUCTO
+// ===============================
+
+function consultProduct(id) {
+
+  const p =
+    products.find(x => x.id === id);
+
+  if (!p) return;
 
   const message =
     `Hola! 👋 Quiero consultar el precio de ${p.name}.`;
 
-  if(!WHATSAPP_NUMBER.includes("X")){
+  if (!WHATSAPP_NUMBER.includes("X")) {
+
     window.open(
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
       "_blank"
     );
+
   } else {
+
     alert(`Precio a consultar: ${p.name}`);
+
   }
 }
 
+// ===============================
+// PRECIOS POR CANTIDAD
+// ===============================
 
-function getUnitPrice(product, qty){
-  if(qty >= 3 && product.price3 !== null){
+function getUnitPrice(product, qty) {
+
+  if (
+    qty >= 3 &&
+    product.price3 !== null
+  ) {
     return product.price3;
   }
 
-  if(qty === 2 && product.price2 !== null){
+  if (
+    qty === 2 &&
+    product.price2 !== null
+  ) {
     return product.price2;
   }
 
   return product.price;
 }
 
+// ===============================
+// AGREGAR AL CARRITO
+// ===============================
 
-function addToCart(id){
-  const product = products.find(p => p.id === id);
+function addToCart(id) {
 
-  if(!product) return;
+  const product =
+    products.find(p => p.id === id);
 
-  if(product.price === null){
+  if (!product) return;
+
+  if (product.price === null) {
+
     consultProduct(id);
+
     return;
   }
 
-  const found = cart.find(i => i.id === id);
+  const found =
+    cart.find(i => i.id === id);
 
-  if(found){
+  if (found) {
+
     found.qty++;
+
   } else {
+
     cart.push({
       id: id,
       qty: 1
     });
+
   }
 
   save();
+
   renderCart();
+
   openCart();
 }
 
+// ===============================
+// CAMBIAR CANTIDAD
+// ===============================
 
-function changeQty(id, delta){
-  const item = cart.find(i => i.id === id);
+function changeQty(id, delta) {
 
-  if(!item) return;
+  const item =
+    cart.find(i => i.id === id);
+
+  if (!item) return;
 
   item.qty += delta;
 
-  if(item.qty <= 0){
-    cart = cart.filter(i => i.id !== id);
+  if (item.qty <= 0) {
+
+    cart =
+      cart.filter(i => i.id !== id);
+
   }
 
   save();
+
   renderCart();
 }
 
+// ===============================
+// MOSTRAR CARRITO
+// ===============================
 
-function renderCart(){
-  const items = document.getElementById("cartItems");
+function renderCart() {
 
-  const count = cart.reduce(
-    (s,i) => s + i.qty,
-    0
-  );
+  const items =
+    document.getElementById("cartItems");
 
-  document.getElementById("cartCount").textContent = count;
+  if (!items) return;
 
-  if(!cart.length){
+  const count =
+    cart.reduce(
+      (s,i) => s + i.qty,
+      0
+    );
+
+  const cartCount =
+    document.getElementById("cartCount");
+
+  if (cartCount) {
+    cartCount.textContent = count;
+  }
+
+  if (!cart.length) {
 
     items.innerHTML = `
       <div class="empty">
@@ -383,20 +510,25 @@ function renderCart(){
 
     items.innerHTML = cart.map(i => {
 
-      const p = products.find(x => x.id === i.id);
+      const p =
+        products.find(x => x.id === i.id);
 
-      if(!p) return "";
+      if (!p) return "";
 
-      const unitPrice = getUnitPrice(p, i.qty);
+      const unitPrice =
+        getUnitPrice(p, i.qty);
 
-      const itemTotal = unitPrice * i.qty;
+      const itemTotal =
+        unitPrice * i.qty;
 
       return `
+
         <div class="cart-item">
 
           <img
             src="${p.image}"
             alt="${p.name}"
+            onerror="this.src='https://placehold.co/200x200/f0ede5/333?text=Sin+imagen'"
           >
 
           <div>
@@ -427,7 +559,14 @@ function renderCart(){
 
             </div>
 
-            <small style="display:block;margin-top:6px;color:#3b713b;font-weight:700;">
+            <small
+              style="
+                display:block;
+                margin-top:6px;
+                color:#3b713b;
+                font-weight:700;
+              "
+            >
               ${money(itemTotal)}
             </small>
 
@@ -441,68 +580,93 @@ function renderCart(){
           </button>
 
         </div>
+
       `;
 
     }).join("");
-
   }
 
+  const total =
+    cart.reduce((sum,i) => {
 
-  const total = cart.reduce((sum,i) => {
+      const p =
+        products.find(x => x.id === i.id);
 
-    const p = products.find(x => x.id === i.id);
+      if (!p) return sum;
 
-    if(!p) return sum;
+      const unitPrice =
+        getUnitPrice(p, i.qty);
 
-    const unitPrice = getUnitPrice(p, i.qty);
+      return sum +
+        (unitPrice * i.qty);
 
-    return sum + (unitPrice * i.qty);
+    }, 0);
 
-  }, 0);
+  const subtotal =
+    document.getElementById("subtotal");
 
-
-  document.getElementById("subtotal").textContent =
-    money(total);
+  if (subtotal) {
+    subtotal.textContent =
+      money(total);
+  }
 }
 
+// ===============================
+// ABRIR CARRITO
+// ===============================
 
-function openCart(){
+function openCart() {
 
-  document
-    .getElementById("cartPanel")
-    .classList.add("open");
+  const panel =
+    document.getElementById("cartPanel");
 
-  document
-    .getElementById("overlay")
-    .classList.add("show");
+  const overlay =
+    document.getElementById("overlay");
 
+  if (panel) {
+    panel.classList.add("open");
+  }
+
+  if (overlay) {
+    overlay.classList.add("show");
+  }
 }
 
+// ===============================
+// CERRAR CARRITO
+// ===============================
 
-function closeCart(){
+function closeCart() {
 
-  document
-    .getElementById("cartPanel")
-    .classList.remove("open");
+  const panel =
+    document.getElementById("cartPanel");
 
-  document
-    .getElementById("overlay")
-    .classList.remove("show");
+  const overlay =
+    document.getElementById("overlay");
 
+  if (panel) {
+    panel.classList.remove("open");
+  }
+
+  if (overlay) {
+    overlay.classList.remove("show");
+  }
 }
 
+// ===============================
+// FINALIZAR COMPRA
+// ===============================
 
-function checkout(){
+function checkout() {
 
-  if(!cart.length){
+  if (!cart.length) {
 
     alert("El carrito está vacío.");
 
     return;
   }
 
-
-  if(WHATSAPP_NUMBER.includes("X")){
+  if (WHATSAPP_NUMBER.includes("X")) {
 
     alert(
       "Primero colocá el número de WhatsApp del negocio en app.js."
@@ -511,37 +675,42 @@ function checkout(){
     return;
   }
 
+  const lines =
+    cart.map(i => {
 
-  const lines = cart.map(i => {
+      const p =
+        products.find(x => x.id === i.id);
 
-    const p = products.find(x => x.id === i.id);
+      if (!p) return "";
 
-    if(!p) return "";
+      const unitPrice =
+        getUnitPrice(p, i.qty);
 
-    const unitPrice = getUnitPrice(p, i.qty);
+      const totalProduct =
+        unitPrice * i.qty;
 
-    const totalProduct = unitPrice * i.qty;
+      return (
+        `• ${p.name} x${i.qty} — ` +
+        `${money(totalProduct)}`
+      );
 
-    return (
-      `• ${p.name} x${i.qty} — ` +
-      `${money(totalProduct)}`
-    );
+    }).filter(Boolean);
 
-  }).filter(Boolean);
+  const total =
+    cart.reduce((sum,i) => {
 
+      const p =
+        products.find(x => x.id === i.id);
 
-  const total = cart.reduce((sum,i) => {
+      if (!p) return sum;
 
-    const p = products.find(x => x.id === i.id);
+      const unitPrice =
+        getUnitPrice(p, i.qty);
 
-    if(!p) return sum;
+      return sum +
+        (unitPrice * i.qty);
 
-    const unitPrice = getUnitPrice(p, i.qty);
-
-    return sum + (unitPrice * i.qty);
-
-  }, 0);
-
+    }, 0);
 
   const msg =
     `Hola! 👋 Quiero hacer un pedido en Nova Importados:\n\n` +
@@ -550,133 +719,206 @@ function checkout(){
     `Localidad: \n` +
     `Forma de pago: `;
 
-
   window.open(
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,
     "_blank"
   );
-
 }
-
 
 // ===============================
 // EVENTOS
 // ===============================
 
-document.getElementById("cartButton").onclick = openCart;
+const cartButton =
+  document.getElementById("cartButton");
 
-document.getElementById("closeCart").onclick = closeCart;
+if (cartButton) {
+  cartButton.onclick = openCart;
+}
 
-document.getElementById("overlay").onclick = closeCart;
+const closeCartButton =
+  document.getElementById("closeCart");
 
-document.getElementById("checkout").onclick = checkout;
+if (closeCartButton) {
+  closeCartButton.onclick = closeCart;
+}
 
+const overlay =
+  document.getElementById("overlay");
 
-document.getElementById("clearCart").onclick = () => {
+if (overlay) {
+  overlay.onclick = closeCart;
+}
 
-  cart = [];
+const checkoutButton =
+  document.getElementById("checkout");
 
-  save();
+if (checkoutButton) {
+  checkoutButton.onclick = checkout;
+}
 
-  renderCart();
+const clearCart =
+  document.getElementById("clearCart");
 
-};
+if (clearCart) {
 
+  clearCart.onclick = () => {
 
-document.getElementById("instagramLink").href =
-  INSTAGRAM_URL;
+    cart = [];
 
+    save();
 
-document.getElementById("waFloat").href =
-  `https://wa.me/${WHATSAPP_NUMBER}`;
+    renderCart();
 
+  };
 
-document
-  .getElementById("searchInput")
-  .addEventListener("input", function(){
+}
 
-    searchTerm = this.value.trim();
+const instagramLink =
+  document.getElementById("instagramLink");
 
-    renderProducts();
+if (instagramLink) {
+  instagramLink.href =
+    INSTAGRAM_URL;
+}
 
-  });
+const waFloat =
+  document.getElementById("waFloat");
 
+if (waFloat) {
 
-document
-  .getElementById("sortSelect")
-  .addEventListener("change", function(){
+  waFloat.href =
+    `https://wa.me/${WHATSAPP_NUMBER}`;
 
-    sortOrder = this.value;
+}
 
-    renderProducts();
+const searchInput =
+  document.getElementById("searchInput");
 
-  });
+if (searchInput) {
 
+  searchInput.addEventListener(
+    "input",
+    function() {
 
-// ===============================
-// INICIAR TIENDA
-// ===============================
+      searchTerm =
+        this.value.trim();
+
+      renderProducts();
+
+    }
+  );
+
+}
+
+const sortSelect =
+  document.getElementById("sortSelect");
+
+if (sortSelect) {
+
+  sortSelect.addEventListener(
+    "change",
+    function() {
+
+      sortOrder =
+        this.value;
+
+      renderProducts();
+
+    }
+  );
+
+}
+
 // ===============================
 // MÁS VENDIDOS
 // ===============================
 
-const bestSellerIds = [19, 21, 33, 51, 42, 55, 65, 67];
+const bestSellerIds = [
+  19,
+  21,
+  33,
+  51,
+  42,
+  55,
+  65,
+  67
+];
 
 function renderBestSellers() {
-  const grid = document.getElementById("bestSellersGrid");
+
+  const grid =
+    document.getElementById(
+      "bestSellersGrid"
+    );
 
   if (!grid) return;
 
-  const bestSellers = bestSellerIds
-    .map(id => products.find(p => p.id === id))
-    .filter(Boolean);
+  const bestSellers =
+    bestSellerIds
+      .map(id =>
+        products.find(p => p.id === id)
+      )
+      .filter(Boolean);
 
-  grid.innerHTML = bestSellers.map(p => `
-    <article class="card">
+  grid.innerHTML =
+    bestSellers.map(p => `
 
-      <img
-        class="photo"
-        src="${p.image}"
-        alt="${p.name}"
-        loading="lazy"
-      >
+      <article class="card">
 
-      <div class="card-body">
+        <img
+          class="photo"
+          src="${p.image}"
+          alt="${p.name}"
+          loading="lazy"
+          onerror="this.src='https://placehold.co/700x700/f0ede5/333?text=Sin+imagen'"
+        >
 
-        <div class="tag">
-          ${p.category.toUpperCase()}
+        <div class="card-body">
+
+          <div class="tag">
+            ${p.category.toUpperCase()}
+          </div>
+
+          <h3>${p.name}</h3>
+
+          <div class="desc">
+            ${p.description}
+          </div>
+
+          <div class="price-row">
+
+            <span class="price">
+              ${
+                p.price === null
+                  ? "Consultar"
+                  : money(p.price)
+              }
+            </span>
+
+            <button
+              class="add"
+              onclick="${
+                p.price === null
+                  ? `consultProduct(${p.id})`
+                  : `addToCart(${p.id})`
+              }"
+            >
+              ${
+                p.price === null
+                  ? "Consultar"
+                  : "Agregar"
+              }
+            </button>
+
+          </div>
+
         </div>
 
-        <h3>${p.name}</h3>
+      </article>
 
-        <div class="desc">
-          ${p.description}
-        </div>
-
-        <div class="price-row">
-
-          <span class="price">
-            ${p.price === null ? "Consultar" : money(p.price)}
-          </span>
-
-          <button
-            class="add"
-            onclick="${p.price === null
-              ? `consultProduct(${p.id})`
-              : `addToCart(${p.id})`
-            }"
-          >
-            ${p.price === null ? "Consultar" : "Agregar"}
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
-  `).join("");
+    `).join("");
 }
-
 
 // ===============================
 // INICIAR TIENDA
@@ -689,3 +931,6 @@ renderProducts();
 renderBestSellers();
 
 renderCart();
+
+console.log("Nova Importados iniciado correctamente.");
+console.log("Cantidad de productos:", products.length);
