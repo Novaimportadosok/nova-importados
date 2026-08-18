@@ -92,7 +92,8 @@ const products = [
 ];
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
 let activeCategory = "Todos";
-
+let searchTerm = "";
+let sortOrder = "default";
 const money = n => "$ " + Number(n).toLocaleString("es-AR");
 const save = () => localStorage.setItem("novaCart", JSON.stringify(cart));
 
@@ -106,20 +107,70 @@ function categories(){
 function setCategory(cat){ activeCategory=cat; categories(); renderProducts(); }
 
 function renderProducts(){
-  const list = activeCategory==="Todos" ? products : products.filter(p=>p.category===activeCategory);
+  let list = activeCategory==="Todos"
+    ? [...products]
+    : products.filter(p=>p.category===activeCategory);
+
+  // Buscar por nombre, marca o descripción
+  if(searchTerm){
+    const term = searchTerm.toLowerCase();
+
+    list = list.filter(p =>
+      p.name.toLowerCase().includes(term) ||
+      p.category.toLowerCase().includes(term) ||
+      p.description.toLowerCase().includes(term)
+    );
+  }
+
+  // Ordenar
+  if(sortOrder === "az"){
+    list.sort((a,b)=>a.name.localeCompare(b.name));
+  }
+
+  if(sortOrder === "za"){
+    list.sort((a,b)=>b.name.localeCompare(a.name));
+  }
+
+  if(sortOrder === "low"){
+    list.sort((a,b)=>
+      (a.price ?? Infinity) - (b.price ?? Infinity)
+    );
+  }
+
+  if(sortOrder === "high"){
+    list.sort((a,b)=>
+      (b.price ?? -1) - (a.price ?? -1)
+    );
+  }
+
   document.getElementById("productGrid").innerHTML = list.map(p => `
     <article class="card">
       <img class="photo" src="${p.image}" alt="${p.name}" loading="lazy">
+
       <div class="card-body">
         <div class="tag">${p.category.toUpperCase()}</div>
+
         <h3>${p.name}</h3>
+
         <div class="desc">${p.description}</div>
+
         <div class="price-row">
-          <span class="price">${money(p.price)}</span>
-          <button class="add" onclick="addToCart(${p.id})">Agregar</button>
+          <span class="price">
+            ${p.price === null ? "Consultar" : money(p.price)}
+          </span>
+
+          <button class="add" onclick="addToCart(${p.id})">
+            ${p.price === null ? "Consultar" : "Agregar"}
+          </button>
         </div>
       </div>
-    </article>`).join("");
+    </article>
+  `).join("");
+
+  if(!list.length){
+    document.getElementById("productGrid").innerHTML =
+      `<div class="empty">No encontramos perfumes con esa búsqueda.</div>`;
+  }
 }
 
 function addToCart(id){
@@ -191,4 +242,13 @@ document.getElementById("checkout").onclick=checkout;
 document.getElementById("clearCart").onclick=()=>{cart=[];save();renderCart()};
 document.getElementById("instagramLink").href=INSTAGRAM_URL;
 document.getElementById("waFloat").href=`https://wa.me/${WHATSAPP_NUMBER}`;
+document.getElementById("searchInput").addEventListener("input", function(){
+  searchTerm = this.value.trim();
+  renderProducts();
+});
+
+document.getElementById("sortSelect").addEventListener("change", function(){
+  sortOrder = this.value;
+  renderProducts();
+});
 categories(); renderProducts(); renderCart();
