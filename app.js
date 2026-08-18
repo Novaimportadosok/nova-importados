@@ -107,11 +107,10 @@ function categories(){
 }
 
 function setCategory(cat){ activeCategory=cat; categories(); renderProducts(); }
-
 function renderProducts(){
-  let list = activeCategory==="Todos"
+  let list = activeCategory === "Todos"
     ? [...products]
-    : products.filter(p=>p.category===activeCategory);
+    : products.filter(p => p.category === activeCategory);
 
   if(searchTerm){
     const term = searchTerm.toLowerCase();
@@ -124,122 +123,79 @@ function renderProducts(){
   }
 
   if(sortOrder === "az"){
-    list.sort((a,b)=>a.name.localeCompare(b.name));
+    list.sort((a,b) => a.name.localeCompare(b.name));
   }
 
   if(sortOrder === "za"){
-    list.sort((a,b)=>b.name.localeCompare(a.name));
+    list.sort((a,b) => b.name.localeCompare(a.name));
   }
 
   if(sortOrder === "low"){
-    list.sort((a,b)=>
+    list.sort((a,b) =>
       (a.price ?? Infinity) - (b.price ?? Infinity)
     );
   }
 
   if(sortOrder === "high"){
-    list.sort((a,b)=>
+    list.sort((a,b) =>
       (b.price ?? -1) - (a.price ?? -1)
     );
   }
 
-  document.getElementById("productGrid").innerHTML = list.map(p => `
+  const grid = document.getElementById("productGrid");
+
+  if(!grid) return;
+
+  if(!list.length){
+    grid.innerHTML =
+      `<div class="empty">No encontramos perfumes con esa búsqueda.</div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(p => `
     <article class="card">
-      <img class="photo" src="${p.image}" alt="${p.name}" loading="lazy">
+      <img
+        class="photo"
+        src="${p.image}"
+        alt="${p.name}"
+        loading="lazy"
+      >
 
       <div class="card-body">
-        <div class="tag">${p.category.toUpperCase()}</div>
+
+        <div class="tag">
+          ${p.category.toUpperCase()}
+        </div>
 
         <h3>${p.name}</h3>
 
-        <div class="desc">${p.description}</div>
+        <div class="desc">
+          ${p.description}
+        </div>
 
         <div class="price-row">
+
           <span class="price">
             ${p.price === null ? "Consultar" : money(p.price)}
           </span>
 
-          <button class="add" onclick="addToCart(${p.id})">
+          <button
+            class="add"
+            onclick="${p.price === null
+              ? `consultProduct(${p.id})`
+              : `addToCart(${p.id})`
+            }"
+          >
             ${p.price === null ? "Consultar" : "Agregar"}
           </button>
+
         </div>
+
       </div>
     </article>
   `).join("");
-
-  if(!list.length){
-    document.getElementById("productGrid").innerHTML =
-      `<div class="empty">No encontramos perfumes con esa búsqueda.</div>`;
-  }
 }
-  let list = activeCategory==="Todos"
-    ? [...products]
-    : products.filter(p=>p.category===activeCategory);
-
-  // Buscar por nombre, marca o descripción
-  if(searchTerm){
-    const term = searchTerm.toLowerCase();
-
-    list = list.filter(p =>
-      p.name.toLowerCase().includes(term) ||
-      p.category.toLowerCase().includes(term) ||
-      p.description.toLowerCase().includes(term)
-    );
-  }
-
-  // Ordenar
-  if(sortOrder === "az"){
-    list.sort((a,b)=>a.name.localeCompare(b.name));
-  }
-
-  if(sortOrder === "za"){
-    list.sort((a,b)=>b.name.localeCompare(a.name));
-  }
-
-  if(sortOrder === "low"){
-    list.sort((a,b)=>
-      (a.price ?? Infinity) - (b.price ?? Infinity)
-    );
-  }
-
-  if(sortOrder === "high"){
-    list.sort((a,b)=>
-      (b.price ?? -1) - (a.price ?? -1)
-    );
-  }
-
-  document.getElementById("productGrid").innerHTML = list.map(p => `
-    <article class="card">
-      <img class="photo" src="${p.image}" alt="${p.name}" loading="lazy">
-
-      <div class="card-body">
-        <div class="tag">${p.category.toUpperCase()}</div>
-
-        <h3>${p.name}</h3>
-
-        <div class="desc">${p.description}</div>
-
-        <div class="price-row">
-          <span class="price">
-            ${p.price === null ? "Consultar" : money(p.price)}
-          </span>
-
-          <button class="add" onclick="addToCart(${p.id})">
-            ${p.price === null ? "Consultar" : "Agregar"}
-          </button>
-        </div>
-      </div>
-    </article>
-  `).join("");
-
-  if(!list.length){
-    document.getElementById("productGrid").innerHTML =
-      `<div class="empty">No encontramos perfumes con esa búsqueda.</div>`;
-  }
-}
-
-function addToCart(id){
-  function consultProduct(id){
+function consultProduct(id){
   const p = products.find(x => x.id === id);
 
   if(!p) return;
@@ -256,15 +212,30 @@ function addToCart(id){
     alert(`Precio a consultar: ${p.name}`);
   }
 }
-        const product = products.find(p=>p.id===id);
+
+
+function addToCart(id){
+  const product = products.find(p => p.id === id);
+
   if(!product) return;
+
+  // Si no tiene precio, consultar por WhatsApp
   if(product.price === null){
-    alert("Este producto tiene precio a consultar. Escribinos por WhatsApp.");
+    consultProduct(id);
     return;
   }
-  const found = cart.find(i=>i.id===id);
-  if(found) found.qty++;
-  else cart.push({id,qty:1});
+
+  const found = cart.find(i => i.id === id);
+
+  if(found){
+    found.qty++;
+  } else {
+    cart.push({
+      id: id,
+      qty: 1
+    });
+  }
+
   save();
   renderCart();
   openCart();
@@ -306,24 +277,64 @@ function openCart(){document.getElementById("cartPanel").classList.add("open");d
 function closeCart(){document.getElementById("cartPanel").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
 
 function checkout(){
-  if(!cart.length){alert("El carrito está vacío.");return}
-  if(WHATSAPP_NUMBER.includes("X")){alert("Primero colocá el número de WhatsApp del negocio en app.js.");return}
-  const lines=cart.map(i=>{
-    const p=products.find(x=>x.id===i.id);
-    return `• ${p.name} x${i.qty} — ${money(p.price*i.qty)}`;
+  if(!cart.length){
+    alert("El carrito está vacío.");
+    return;
+  }
+
+  if(WHATSAPP_NUMBER.includes("X")){
+    alert("Primero colocá el número de WhatsApp del negocio en app.js.");
+    return;
+  }
+
+  const lines = cart.map(i => {
+    const p = products.find(x => x.id === i.id);
+
+    return `• ${p.name} x${i.qty} — ${money(p.price * i.qty)}`;
   });
-  const total=cart.reduce((s,i)=>s+products.find(p=>p.id===i.id).price*i.qty,0);
-  const msg=`Hola! 👋 Quiero hacer un pedido en Nova Importados:%0A%0A${lines.join("%0A")}%0A%0A*Total: ${money(total)}*%0A%0ALocalidad: %0AForma de pago: `;
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank");
+
+  const total = cart.reduce((s, i) => {
+    const p = products.find(x => x.id === i.id);
+    return s + (p.price * i.qty);
+  }, 0);
+
+  const msg =
+    `Hola! 👋 Quiero hacer un pedido en Nova Importados:\n\n` +
+    `${lines.join("\n")}\n\n` +
+    `Total: ${money(total)}\n\n` +
+    `Localidad: \n` +
+    `Forma de pago: `;
+
+  window.open(
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,
+    "_blank"
+  );
 }
 
-document.getElementById("cartButton").onclick=openCart;
-document.getElementById("closeCart").onclick=closeCart;
-document.getElementById("overlay").onclick=closeCart;
-document.getElementById("checkout").onclick=checkout;
-document.getElementById("clearCart").onclick=()=>{cart=[];save();renderCart()};
-document.getElementById("instagramLink").href=INSTAGRAM_URL;
-document.getElementById("waFloat").href=`https://wa.me/${WHATSAPP_NUMBER}`;
+
+// ===============================
+// EVENTOS
+// ===============================
+
+document.getElementById("cartButton").onclick = openCart;
+
+document.getElementById("closeCart").onclick = closeCart;
+
+document.getElementById("overlay").onclick = closeCart;
+
+document.getElementById("checkout").onclick = checkout;
+
+document.getElementById("clearCart").onclick = () => {
+  cart = [];
+  save();
+  renderCart();
+};
+
+document.getElementById("instagramLink").href = INSTAGRAM_URL;
+
+document.getElementById("waFloat").href =
+  `https://wa.me/${WHATSAPP_NUMBER}`;
+
 document.getElementById("searchInput").addEventListener("input", function(){
   searchTerm = this.value.trim();
   renderProducts();
@@ -333,4 +344,12 @@ document.getElementById("sortSelect").addEventListener("change", function(){
   sortOrder = this.value;
   renderProducts();
 });
-categories(); renderProducts(); renderCart();
+
+
+// ===============================
+// INICIAR TIENDA
+// ===============================
+
+categories();
+renderProducts();
+renderCart();
