@@ -3,9 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nova Importados - Perfumes importados y fragancias.">
+
+  <meta
+    name="description"
+    content="Nova Importados - Perfumes importados y fragancias."
+  >
+
   <title>Nova Importados</title>
 
+  <!-- FUENTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -14,10 +20,15 @@
     rel="stylesheet"
   >
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+  <!-- ===============================
+       HEADER
+  ================================ -->
 
   <header class="topbar">
 
@@ -25,14 +36,24 @@
       <span>nova</span><b>importados</b>
     </a>
 
-    <button class="menu" aria-label="Abrir menú">
+    <button
+      class="menu"
+      type="button"
+      aria-label="Abrir menú"
+    >
       ☰
     </button>
 
   </header>
 
 
+  <!-- ===============================
+       CONTENIDO PRINCIPAL
+  ================================ -->
+
   <main>
+
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -49,7 +70,10 @@
         Descubrí perfumes seleccionados y elegí tu próximo favorito.
       </p>
 
-      <a class="primary" href="#productos">
+      <a
+        class="primary"
+        href="#productos"
+      >
         Ver productos
       </a>
 
@@ -57,6 +81,8 @@
         class="instagram"
         href="#"
         id="instagramLink"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         ◎ &nbsp; @nova.importados
       </a>
@@ -80,7 +106,16 @@
     </section>
 
 
-    <section id="productos" class="catalog">
+    <!-- ===============================
+         CATÁLOGO
+    ================================ -->
+
+    <section
+      id="productos"
+      class="catalog"
+    >
+
+      <!-- BUSCADOR Y ORDEN -->
 
       <div class="catalog-tools">
 
@@ -89,12 +124,14 @@
           id="searchInput"
           placeholder="🔎 Buscar perfume..."
           aria-label="Buscar perfume"
+          autocomplete="off"
         >
 
         <select
           id="sortSelect"
           aria-label="Ordenar productos"
         >
+
           <option value="default">
             Ordenar por
           </option>
@@ -120,47 +157,108 @@
       </div>
 
 
+      <!-- CATEGORÍAS -->
+
       <div
         class="filters"
         id="filters"
       ></div>
 
 
-      <div
-        class="grid"
-        id="productGrid"
-      ></div>
+      <!-- ===============================
+           MÁS VENDIDOS
+      ================================ -->
+
+      <section class="best-sellers">
+
+        <div class="section-title">
+
+          <p class="eyebrow">
+            FAVORITOS
+          </p>
+
+          <h2>
+            Más vendidos
+          </h2>
+
+        </div>
+
+        <div
+          class="grid"
+          id="bestSellersGrid"
+        ></div>
+
+      </section>
+
+
+      <!-- ===============================
+           TODOS LOS PRODUCTOS
+      ================================ -->
+
+      <section class="all-products">
+
+        <div class="section-title">
+
+          <p class="eyebrow">
+            CATÁLOGO
+          </p>
+
+          <h2>
+            Todos nuestros perfumes
+          </h2>
+
+        </div>
+
+        <div
+          class="grid"
+          id="productGrid"
+        ></div>
+
+      </section>
 
     </section>
 
   </main>
 
 
-  <!-- BOTÓN DEL CARRITO -->
+  <!-- ===============================
+       BOTÓN DEL CARRITO
+  ================================ -->
 
   <button
     class="cart-fab"
     id="cartButton"
+    type="button"
     aria-label="Abrir carrito"
   >
-    🛍️ <span id="cartCount">0</span>
+    🛍️
+
+    <span id="cartCount">
+      0
+    </span>
+
   </button>
 
 
-  <!-- BOTÓN DE WHATSAPP -->
+  <!-- ===============================
+       BOTÓN WHATSAPP
+  ================================ -->
 
   <a
     class="wa-fab"
     id="waFloat"
     href="#"
     target="_blank"
+    rel="noopener noreferrer"
     aria-label="WhatsApp"
   >
     ◔
   </a>
 
 
-  <!-- FONDO DEL CARRITO -->
+  <!-- ===============================
+       FONDO DEL CARRITO
+  ================================ -->
 
   <div
     class="overlay"
@@ -168,7 +266,9 @@
   ></div>
 
 
-  <!-- CARRITO -->
+  <!-- ===============================
+       CARRITO
+  ================================ -->
 
   <aside
     class="cart"
@@ -182,18 +282,26 @@
         Tu carrito
       </h2>
 
-      <button id="closeCart">
+      <button
+        id="closeCart"
+        type="button"
+        aria-label="Cerrar carrito"
+      >
         ×
       </button>
 
     </div>
 
 
+    <!-- PRODUCTOS DEL CARRITO -->
+
     <div
       id="cartItems"
       class="cart-items"
     ></div>
 
+
+    <!-- PARTE INFERIOR -->
 
     <div class="cart-bottom">
 
@@ -217,7 +325,7 @@
         </span>
 
         <strong id="subtotal">
-          $0
+          $ 0
         </strong>
 
       </div>
@@ -226,6 +334,7 @@
       <button
         class="checkout"
         id="checkout"
+        type="button"
       >
         Finalizar por WhatsApp
       </button>
@@ -234,6 +343,7 @@
       <button
         class="clear"
         id="clearCart"
+        type="button"
       >
         Vaciar carrito
       </button>
@@ -243,7 +353,15 @@
   </aside>
 
 
-  <script src="app.js"></script>
+  <!-- ===============================
+       JAVASCRIPT
+  ================================ -->
+
+  <!-- defer hace que app.js espere a que cargue el HTML -->
+  <script
+    src="app.js"
+    defer
+  ></script>
 
 </body>
 </html>
