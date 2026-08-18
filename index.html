@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nova Importados - Perfumes importados y fragancias.">
+  <title>Nova Importados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span>nova</span><b>importados</b>
+    </a>
+    <button class="menu" aria-label="Abrir menú">☰</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">PERFUMES IMPORTADOS</p>
+      <h1>Tu fragancia,<br><span>tu estilo.</span></h1>
+      <p class="hero-text">Descubrí perfumes seleccionados y elegí tu próximo favorito.</p>
+      <a class="primary" href="#productos">Ver productos</a>
+      <a class="instagram" href="#" id="instagramLink">◎ &nbsp; @nova.importados</a>
+      <div class="benefits">
+        <div>✦ <span>Productos seleccionados</span></div>
+        <div>🚚 <span>Envíos coordinados</span></div>
+        <div>🎁 <span>Ideal para regalar</span></div>
+      </div>
+    </section>
+
+    <section id="productos" class="catalog">
+      <div class="filters" id="filters"></div>
+      <div class="grid" id="productGrid"></div>
+    </section>
+  </main>
+
+  <button class="cart-fab" id="cartButton" aria-label="Abrir carrito">
+    🛍️ <span id="cartCount">0</span>
+  </button>
+
+  <a class="wa-fab" id="waFloat" href="#" target="_blank" aria-label="WhatsApp">◔</a>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart" id="cartPanel" aria-label="Carrito">
+    <div class="cart-head">
+      <h2>Tu carrito</h2>
+      <button id="closeCart">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-bottom">
+      <div class="shipping-note">
+        <strong>📦 Envíos</strong>
+        <span>Coordinamos costo y modalidad por WhatsApp.</span>
+      </div>
+      <div class="subtotal"><span>Subtotal</span><strong id="subtotal">$0</strong></div>
+      <button class="checkout" id="checkout">Finalizar por WhatsApp</button>
+      <button class="clear" id="clearCart">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>
