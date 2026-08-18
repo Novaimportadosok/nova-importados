@@ -90,7 +90,89 @@ const products = [
   {id:70,name:"Versace Eros Flame EDP 100ml",category:"Diseñador",price:160000,price2:155000,price3:152000,image:"https://placehold.co/700x700/eee8df/333?text=Eros+Flame",description:"Fragancia Versace."},
  {id:71,name:"Montale Arabians Tonka EDP",category:"Diseñador",price:295000,price2:288000,price3:null,image:"https://placehold.co/700x700/e5eee7/333?text=Arabians+Tonka",description:"Fragancia Montale."}
 ];
+// ===============================
+// IMÁGENES REALES DEL CATÁLOGO
+// ===============================
 
+const imageFiles = {
+  1: "01-art-of-universe.jpeg",
+  2: "02-asad-bourbon.jpeg",
+  3: "03-asad-negro.jpeg",
+  4: "04-asad-elixir.jpeg",
+  5: "05-asad-zanzibar.jpeg",
+  6: "06-badee-al-oud-amethyst.jpeg",
+  7: "07-badee-al-oud-for-glory.jpeg",
+  8: "08-badee-al-oud-honor-and-glory.jpeg",
+  9: "09-badee-al-oud-noble-blush.jpeg",
+  10: "10-badee-al-oud-sublime.jpeg",
+  11: "11-eclaire.jpeg",
+  12: "12-fakhar-gold.jpeg",
+  13: "13-fakhar-masculino.jpeg",
+  14: "14-fakhar-femenino.jpeg",
+  15: "15-hayaati-negro.jpeg",
+  16: "16-hayaatim.jpeg",
+  17: "17-her-confession.jpeg",
+  18: "18-his-confession.jpeg",
+  19: "19-khamrah.jpeg",
+  20: "20-khamrah-dukhan.jpeg",
+  21: "21-khamrah-qahwa.jpeg",
+  22: "22-kit-asad-asad-zanzibar.jpeg",
+  23: "23-kit-yara-yara-candy.jpeg",
+  24: "24-mayar.jpeg",
+  25: "25-musamam-white.jpeg",
+  26: "26-nebras.jpeg",
+  27: "27-qaed-al-fursan.jpeg",
+  28: "28-qaed-al-fursan-unlimited.jpeg",
+  29: "29-teriaq-femenino.jpeg",
+  30: "30-the-kingdom-femenino.jpeg",
+  31: "31-the-kingdom-masculino.jpeg",
+  32: "32-vintage-radio.jpeg",
+  33: "33-yara-candy.jpeg",
+  34: "34-yara-moi.jpeg",
+  35: "35-yara-rosa.jpeg",
+  36: "36-yara-elixir.jpeg",
+  37: "37-yara-tous.jpeg",
+  38: "38-royal-amber.jpeg",
+  39: "39-liquid-brun.jpeg",
+  40: "40-vulcan-feu.jpeg",
+  41: "41-club-de-nuit-iconic.jpeg",
+  42: "42-club-de-nuit-intense-man.jpeg",
+  43: "43-club-de-nuit-untold.jpeg",
+  44: "44-club-de-nuit-urban-man-elixir.jpeg",
+  45: "45-club-de-nuit-woman.jpeg",
+  46: "46-odyssey-candee.jpeg",
+  47: "47-odyssey-mandarin-sky.jpeg",
+  48: "48-odyssey-mega-limited-edition.jpeg",
+  49: "49-yum-yum-delights.jpeg",
+  50: "50-9am-dive.jpeg",
+  51: "51-9pm.jpeg",
+  52: "52-9pm-elixir.jpeg",
+  53: "53-9pm-night-out.jpeg",
+  54: "54-9pm-rebel.jpeg",
+  55: "55-amber-oud-gold-edition-120ml.jpeg",
+  56: "56-amber-oud-dubai-night.jpeg",
+  57: "57-amber-oud-aqua-dubai.jpeg",
+  58: "58-bharara-king-100ml.jpeg",
+  59: "59-bharara-king-150ml.jpeg",
+  60: "60-bharara-king-parfum.jpeg",
+  61: "61-hawas-ice.jpeg",
+  62: "62-hawas-for-him.jpeg",
+  63: "63-hawas-malibu.jpeg",
+  64: "64-salvo-intense.jpeg",
+  65: "65-la-vie-est-belle-lancome-100ml.jpeg",
+  66: "66-jean-paul-gaultier-le-male-le-parfum-intense-125ml.jpeg",
+  67: "67-jean-paul-gaultier-le-male-elixir-125ml.jpeg",
+  68: "68-jean-paul-gaultier-scandal-pour-homme-absolu-parfum-100ml.jpeg",
+  69: "69-emporio-armani-stronger-with-you-intensely-edp-100ml.jpeg",
+  70: "70-versace-eros-flame-edp-100ml.jpeg",
+  71: "71-montale-arabians-tonka-edp.jpeg"
+};
+
+products.forEach(product => {
+  if (imageFiles[product.id]) {
+    product.image = `images/${imageFiles[product.id]}`;
+  }
+});
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
 
 let activeCategory = "Todos";
