@@ -174,6 +174,10 @@ const imageFiles = {
 // ASIGNAR IMÁGENES
 // ===============================
 
+// ===============================
+// ASIGNAR IMÁGENES REALES
+// ===============================
+
 products.forEach(product => {
   if (imageFiles[product.id]) {
     product.image = `images/${imageFiles[product.id]}`;
@@ -182,11 +186,17 @@ products.forEach(product => {
 
 console.log("PRODUCTOS CARGADOS:", products.length);
 
-// ===============================
-// CARRITO
-// ===============================
-
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
+
+let activeCategory = "Todos";
+let searchTerm = "";
+let sortOrder = "default";
+
+const money = n => "$ " + Number(n).toLocaleString("es-AR");
+
+const save = () => {
+  localStorage.setItem("novaCart", JSON.stringify(cart));
+};
 
 let activeCategory = "Todos";
 let searchTerm = "";
