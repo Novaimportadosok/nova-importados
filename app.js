@@ -182,7 +182,16 @@ const money = n => "$ " + Number(n).toLocaleString("es-AR");
 const save = () => localStorage.setItem("novaCart", JSON.stringify(cart));
 
 function categories(){
-  const cats = ["Todos", ...new Set(products.map(p=>p.category))];
+  const cats = [
+    "Todos",
+    "Lattafa",
+    "Armaf",
+    "Afnan",
+    "Al Haramain",
+    "Bharara",
+    "Rasasi",
+    "Diseñador"
+  ];
   document.getElementById("filters").innerHTML = cats.map(c =>
     `<button class="filter ${c===activeCategory?"active":""}" onclick="setCategory('${c}')">${c}</button>`
   ).join("");
