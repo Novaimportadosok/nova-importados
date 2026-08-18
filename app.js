@@ -92,6 +92,7 @@ const products = [
 ];
 
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
+
 let activeCategory = "Todos";
 let searchTerm = "";
 let sortOrder = "default";
