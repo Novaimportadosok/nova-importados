@@ -10,14 +10,16 @@ const INSTAGRAM_URL = "https://instagram.com/nova.importados";
 
 // Agregá, quitá o modificá productos en esta lista.
 const products = [
-  {id:1,name:"Perfume Importado 01",category:"Perfumes",price:45000,image:"https://placehold.co/700x700/f0ede5/333?text=Perfume+01",description:"Fragancia seleccionada de larga duración."},
-  {id:2,name:"Perfume Importado 02",category:"Perfumes",price:52000,image:"https://placehold.co/700x700/e9eee5/333?text=Perfume+02",description:"Una opción elegante para todos los días."},
-  {id:3,name:"Perfume Árabe 01",category:"Árabes",price:58000,image:"https://placehold.co/700x700/eee8df/333?text=Arabe+01",description:"Aroma intenso y sofisticado."},
-  {id:4,name:"Perfume Árabe 02",category:"Árabes",price:62000,image:"https://placehold.co/700x700/e5eee7/333?text=Arabe+02",description:"Una fragancia especial para regalar."},
-  {id:5,name:"Set Especial",category:"Sets",price:70000,image:"https://placehold.co/700x700/eee9e0/333?text=Set",description:"Set ideal para regalo."},
-  {id:6,name:"Body Splash",category:"Accesorios",price:30000,image:"https://placehold.co/700x700/e8eee8/333?text=Body+Splash",description:"Fresco, práctico y fácil de llevar."}
-];
-
+    {id:1,name:"Asad Bourbon",category:"Árabes",price:70000,image:"https://placehold.co/700x700/f0ede5/333?text=Asad+Bourbon",description:"Fragancia intensa y sofisticada."},
+  {id:2,name:"Asad Negro",category:"Árabes",price:60000,image:"https://placehold.co/700x700/e9eee5/333?text=Asad+Negro",description:"Aroma elegante y de gran presencia."},
+  {id:3,name:"Asad Elixir",category:"Árabes",price:62000,image:"https://placehold.co/700x700/eee8df/333?text=Asad+Elixir",description:"Una fragancia intensa y especial."},
+  {id:4,name:"Badee Al Oud Amethyst",category:"Árabes",price:65000,image:"https://placehold.co/700x700/e5eee7/333?text=Badee+Amethyst",description:"Aroma sofisticado y envolvente."},
+  {id:5,name:"Badee Al Oud For Glory",category:"Árabes",price:46000,image:"https://placehold.co/700x700/eee9e0/333?text=For+Glory",description:"Una opción elegante para todos los días."},
+  {id:6,name:"Khamrah",category:"Árabes",price:70000,image:"https://placehold.co/700x700/e8eee8/333?text=Khamrah",description:"Fragancia cálida y sofisticada."},
+  {id:7,name:"Khamrah Qahwa",category:"Árabes",price:53000,image:"https://placehold.co/700x700/f0ede5/333?text=Khamrah+Qahwa",description:"Aroma intenso y especial."},
+  {id:8,name:"Yara Candy",category:"Perfumes",price:51000,image:"https://placehold.co/700x700/e9eee5/333?text=Yara+Candy",description:"Fragancia dulce y encantadora."},
+  {id:9,name:"Yara Rosa",category:"Perfumes",price:67000,image:"https://placehold.co/700x700/eee8df/333?text=Yara+Rosa",description:"Una fragancia femenina y elegante."},
+  {id:10,name:"Yara Elixir",category:"Perfumes",price:90000,image:"https://placehold.co/700x700/e5eee7/333?text=Yara+Elixir",description:"Aroma sofisticado y duradero."}
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
 let activeCategory = "Todos";
 
