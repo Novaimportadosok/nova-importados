@@ -123,10 +123,18 @@ function renderProducts(){
 }
 
 function addToCart(id){
+  const product = products.find(p=>p.id===id);
+  if(!product) return;
+  if(product.price === null){
+    alert("Este producto tiene precio a consultar. Escribinos por WhatsApp.");
+    return;
+  }
   const found = cart.find(i=>i.id===id);
   if(found) found.qty++;
   else cart.push({id,qty:1});
-  save(); renderCart(); openCart();
+  save();
+  renderCart();
+  openCart();
 }
 
 function changeQty(id, delta){
