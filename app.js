@@ -113,6 +113,128 @@ function renderProducts(){
     ? [...products]
     : products.filter(p=>p.category===activeCategory);
 
+  if(searchTerm){
+    const term = searchTerm.toLowerCase();
+
+    list = list.filter(p =>
+      p.name.toLowerCase().includes(term) ||
+      p.category.toLowerCase().includes(term) ||
+      p.description.toLowerCase().includes(term)
+    );
+  }
+
+  if(sortOrder === "az"){
+    list.sort((a,b)=>a.name.localeCompare(b.name));
+  }
+
+  if(sortOrder === "za"){
+    list.sort((a,b)=>b.name.localeCompare(a.name));
+  }
+
+  if(sortOrder === "low"){
+    list.sort((a,b)=>
+      (a.price ?? Infinity) - (b.price ?? Infinity)
+    );
+  }
+
+  if(sortOrder === "high"){
+    list.sort((a,b)=>
+      (b.price ?? -1) - (a.price ?? -1)
+    );
+  }
+
+  document.getElementById("productGrid").innerHTML = list.map(p => `
+    <article class="card">
+
+      <img
+        class="photo"
+        src="${p.image}"
+        alt="${p.name}"
+        loading="lazy"
+      >
+
+      <div class="card-body">
+
+        <div class="tag">
+          ${p.category.toUpperCase()}
+        </div>
+
+        <h3>${p.name}</h3>
+
+        <div class="desc">
+          ${p.description}
+        </div>
+
+        ${
+          p.price === null
+          ? `
+            <div class="price-box">
+              <div class="consult-price">
+                Consultar precio
+              </div>
+
+              <button
+                class="add"
+                onclick="consultProduct(${p.id})"
+              >
+                Consultar
+              </button>
+            </div>
+          `
+          : `
+            <div class="price-box">
+
+              <div class="price-line">
+                <span>1 unidad</span>
+                <strong>${money(p.price)}</strong>
+              </div>
+
+              ${
+                p.price2 != null
+                ? `
+                  <div class="price-line">
+                    <span>2 unidades</span>
+                    <strong>${money(p.price2)} c/u</strong>
+                  </div>
+                `
+                : ""
+              }
+
+              ${
+                p.price3 != null
+                ? `
+                  <div class="price-line">
+                    <span>3+ unidades</span>
+                    <strong>${money(p.price3)} c/u</strong>
+                  </div>
+                `
+                : ""
+              }
+
+              <button
+                class="add"
+                onclick="addToCart(${p.id})"
+              >
+                Agregar al carrito
+              </button>
+
+            </div>
+          `
+        }
+
+      </div>
+    </article>
+  `).join("");
+
+  if(!list.length){
+    document.getElementById("productGrid").innerHTML =
+      `<div class="empty">No encontramos perfumes con esa búsqueda.</div>`;
+  }
+}
+  let list = activeCategory==="Todos"
+    ? [...products]
+    : products.filter(p=>p.category===activeCategory);
+
   // Buscar por nombre, marca o descripción
   if(searchTerm){
     const term = searchTerm.toLowerCase();
@@ -176,7 +298,24 @@ function renderProducts(){
 }
 
 function addToCart(id){
-  const product = products.find(p=>p.id===id);
+  function consultProduct(id){
+  const p = products.find(x => x.id === id);
+
+  if(!p) return;
+
+  const message =
+    `Hola! 👋 Quiero consultar el precio de ${p.name}.`;
+
+  if(!WHATSAPP_NUMBER.includes("X")){
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  } else {
+    alert(`Precio a consultar: ${p.name}`);
+  }
+}
+        const product = products.find(p=>p.id===id);
   if(!product) return;
   if(product.price === null){
     alert("Este producto tiene precio a consultar. Escribinos por WhatsApp.");
