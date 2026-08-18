@@ -88,7 +88,9 @@ const products = [
   {id:68,name:"Jean Paul Gaultier Scandal Pour Homme Absolu Parfum 100ml",category:"Diseñador",price:210000,price2:202000,price3:194000,image:"https://placehold.co/700x700/f0ede5/333?text=Scandal+Absolu",description:"Fragancia Jean Paul Gaultier."},
   {id:69,name:"Emporio Armani Stronger With You Intensely EDP 100ml",category:"Diseñador",price:300000,price2:290000,price3:250000,image:"https://placehold.co/700x700/e9eee5/333?text=Stronger+With+You",description:"Fragancia Emporio Armani."},
   {id:70,name:"Versace Eros Flame EDP 100ml",category:"Diseñador",price:160000,price2:155000,price3:152000,image:"https://placehold.co/700x700/eee8df/333?text=Eros+Flame",description:"Fragancia Versace."},
-  {id:71,name:"Montale Arabians Tonka EDP",category:"Diseñador",price:295000,price2:288000,price3:null,image:"https://placehold.co/700x700/e5eee7/333?text=Arabians+Tonka",description:"Fragancia Montale."}
+ {id:71,name:"Montale Arabians Tonka EDP",category:"Diseñador",price:295000,price2:288000,price3:null,image:"https://placehold.co/700x700/e5eee7/333?text=Arabians+Tonka",description:"Fragancia Montale."}
+];
+
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
 let activeCategory = "Todos";
 let searchTerm = "";
