@@ -170,7 +170,15 @@ const imageFiles = {
 
 products.forEach(product => {
   if (imageFiles[product.id]) {
+    product.image = products.forEach(product => {
+  if (imageFiles[product.id]) {
     product.image = `images/${imageFiles[product.id]}`;
+  }
+});
+
+console.log("PRODUCTOS CARGADOS:", products.length);
+
+let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");`images/${imageFiles[product.id]}`;
   }
 });
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
