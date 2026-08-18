@@ -4,9 +4,9 @@
 // IMPORTANTE: reemplazá este número por el WhatsApp del negocio.
 // Formato: código de país + número, sin +, espacios ni guiones.
 // Ejemplo Argentina: 5493511234567
-const WHATSAPP_NUMBER = "549XXXXXXXXXX";
+const WHATSAPP_NUMBER = "5493543313011";
 
-const INSTAGRAM_URL = "https://instagram.com/nova.importados";
+const INSTAGRAM_URL = "https://www.instagram.com/novaimportados.ok/";
 
 // Agregá, quitá o modificá productos en esta lista.
 const products = [
@@ -214,12 +214,24 @@ function consultProduct(id){
 }
 
 
+function getUnitPrice(product, qty){
+  if(qty >= 3 && product.price3 !== null){
+    return product.price3;
+  }
+
+  if(qty === 2 && product.price2 !== null){
+    return product.price2;
+  }
+
+  return product.price;
+}
+
+
 function addToCart(id){
   const product = products.find(p => p.id === id);
 
   if(!product) return;
 
-  // Si no tiene precio, consultar por WhatsApp
   if(product.price === null){
     consultProduct(id);
     return;
@@ -241,62 +253,205 @@ function addToCart(id){
   openCart();
 }
 
+
 function changeQty(id, delta){
-  const item=cart.find(i=>i.id===id);
-  if(!item)return;
+  const item = cart.find(i => i.id === id);
+
+  if(!item) return;
+
   item.qty += delta;
-  if(item.qty<=0) cart=cart.filter(i=>i.id!==id);
-  save(); renderCart();
+
+  if(item.qty <= 0){
+    cart = cart.filter(i => i.id !== id);
+  }
+
+  save();
+  renderCart();
 }
+
 
 function renderCart(){
-  const items=document.getElementById("cartItems");
-  const count=cart.reduce((s,i)=>s+i.qty,0);
-  document.getElementById("cartCount").textContent=count;
+  const items = document.getElementById("cartItems");
+
+  const count = cart.reduce(
+    (s,i) => s + i.qty,
+    0
+  );
+
+  document.getElementById("cartCount").textContent = count;
+
   if(!cart.length){
-    items.innerHTML='<div class="empty">Tu carrito está vacío.<br>Agregá algún perfume para comenzar.</div>';
+
+    items.innerHTML = `
+      <div class="empty">
+        Tu carrito está vacío.<br>
+        Agregá algún perfume para comenzar.
+      </div>
+    `;
+
   } else {
-    items.innerHTML=cart.map(i=>{
-      const p=products.find(x=>x.id===i.id);
-      return `<div class="cart-item">
-        <img src="${p.image}" alt="">
-        <div><h4>${p.name}</h4><small>${money(p.price)} c/u</small>
-          <div class="qty">
-            <button onclick="changeQty(${p.id},-1)">−</button><span>${i.qty}</span><button onclick="changeQty(${p.id},1)">+</button>
+
+    items.innerHTML = cart.map(i => {
+
+      const p = products.find(x => x.id === i.id);
+
+      if(!p) return "";
+
+      const unitPrice = getUnitPrice(p, i.qty);
+
+      const itemTotal = unitPrice * i.qty;
+
+      return `
+        <div class="cart-item">
+
+          <img
+            src="${p.image}"
+            alt="${p.name}"
+          >
+
+          <div>
+
+            <h4>${p.name}</h4>
+
+            <small>
+              ${money(unitPrice)} c/u
+            </small>
+
+            <div class="qty">
+
+              <button
+                onclick="changeQty(${p.id},-1)"
+              >
+                −
+              </button>
+
+              <span>
+                ${i.qty}
+              </span>
+
+              <button
+                onclick="changeQty(${p.id},1)"
+              >
+                +
+              </button>
+
+            </div>
+
+            <small style="display:block;margin-top:6px;color:#3b713b;font-weight:700;">
+              ${money(itemTotal)}
+            </small>
+
           </div>
+
+          <button
+            class="remove"
+            onclick="changeQty(${p.id},-${i.qty})"
+          >
+            🗑
+          </button>
+
         </div>
-        <button class="remove" onclick="changeQty(${p.id},-${i.qty})">🗑</button>
-      </div>`;
+      `;
+
     }).join("");
+
   }
-  const total=cart.reduce((s,i)=>s+(products.find(p=>p.id===i.id).price*i.qty),0);
-  document.getElementById("subtotal").textContent=money(total);
+
+
+  const total = cart.reduce((sum,i) => {
+
+    const p = products.find(x => x.id === i.id);
+
+    if(!p) return sum;
+
+    const unitPrice = getUnitPrice(p, i.qty);
+
+    return sum + (unitPrice * i.qty);
+
+  }, 0);
+
+
+  document.getElementById("subtotal").textContent =
+    money(total);
 }
 
-function openCart(){document.getElementById("cartPanel").classList.add("open");document.getElementById("overlay").classList.add("show")}
-function closeCart(){document.getElementById("cartPanel").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
+
+function openCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.add("open");
+
+  document
+    .getElementById("overlay")
+    .classList.add("show");
+
+}
+
+
+function closeCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.remove("open");
+
+  document
+    .getElementById("overlay")
+    .classList.remove("show");
+
+}
+
 
 function checkout(){
+
   if(!cart.length){
+
     alert("El carrito está vacío.");
+
     return;
   }
+
 
   if(WHATSAPP_NUMBER.includes("X")){
-    alert("Primero colocá el número de WhatsApp del negocio en app.js.");
+
+    alert(
+      "Primero colocá el número de WhatsApp del negocio en app.js."
+    );
+
     return;
   }
 
+
   const lines = cart.map(i => {
+
     const p = products.find(x => x.id === i.id);
 
-    return `• ${p.name} x${i.qty} — ${money(p.price * i.qty)}`;
-  });
+    if(!p) return "";
 
-  const total = cart.reduce((s, i) => {
+    const unitPrice = getUnitPrice(p, i.qty);
+
+    const totalProduct = unitPrice * i.qty;
+
+    return (
+      `• ${p.name} x${i.qty} — ` +
+      `${money(totalProduct)}`
+    );
+
+  }).filter(Boolean);
+
+
+  const total = cart.reduce((sum,i) => {
+
     const p = products.find(x => x.id === i.id);
-    return s + (p.price * i.qty);
+
+    if(!p) return sum;
+
+    const unitPrice = getUnitPrice(p, i.qty);
+
+    return sum + (unitPrice * i.qty);
+
   }, 0);
+
 
   const msg =
     `Hola! 👋 Quiero hacer un pedido en Nova Importados:\n\n` +
@@ -305,10 +460,12 @@ function checkout(){
     `Localidad: \n` +
     `Forma de pago: `;
 
+
   window.open(
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,
     "_blank"
   );
+
 }
 
 
@@ -324,26 +481,46 @@ document.getElementById("overlay").onclick = closeCart;
 
 document.getElementById("checkout").onclick = checkout;
 
+
 document.getElementById("clearCart").onclick = () => {
+
   cart = [];
+
   save();
+
   renderCart();
+
 };
 
-document.getElementById("instagramLink").href = INSTAGRAM_URL;
+
+document.getElementById("instagramLink").href =
+  INSTAGRAM_URL;
+
 
 document.getElementById("waFloat").href =
   `https://wa.me/${WHATSAPP_NUMBER}`;
 
-document.getElementById("searchInput").addEventListener("input", function(){
-  searchTerm = this.value.trim();
-  renderProducts();
-});
 
-document.getElementById("sortSelect").addEventListener("change", function(){
-  sortOrder = this.value;
-  renderProducts();
-});
+document
+  .getElementById("searchInput")
+  .addEventListener("input", function(){
+
+    searchTerm = this.value.trim();
+
+    renderProducts();
+
+  });
+
+
+document
+  .getElementById("sortSelect")
+  .addEventListener("change", function(){
+
+    sortOrder = this.value;
+
+    renderProducts();
+
+  });
 
 
 // ===============================
@@ -351,5 +528,7 @@ document.getElementById("sortSelect").addEventListener("change", function(){
 // ===============================
 
 categories();
+
 renderProducts();
+
 renderCart();
