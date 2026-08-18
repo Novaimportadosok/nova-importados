@@ -20,6 +20,8 @@ const products = [
   {id:8,name:"Yara Candy",category:"Perfumes",price:51000,image:"https://placehold.co/700x700/e9eee5/333?text=Yara+Candy",description:"Fragancia dulce y encantadora."},
   {id:9,name:"Yara Rosa",category:"Perfumes",price:67000,image:"https://placehold.co/700x700/eee8df/333?text=Yara+Rosa",description:"Una fragancia femenina y elegante."},
   {id:10,name:"Yara Elixir",category:"Perfumes",price:90000,image:"https://placehold.co/700x700/e5eee7/333?text=Yara+Elixir",description:"Aroma sofisticado y duradero."}
+];
+
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
 let activeCategory = "Todos";
 
