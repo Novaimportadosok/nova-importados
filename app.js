@@ -90,7 +90,6 @@ const products = [
   {id:70,name:"Versace Eros Flame EDP 100ml",category:"Diseñador",price:160000,image:"https://placehold.co/700x700/eee8df/333?text=Eros+Flame",description:"Fragancia Versace."},
     {id:71,name:"Montale Arabians Tonka EDP",category:"Diseñador",price:295000,image:"https://placehold.co/700x700/e5eee7/333?text=Arabians+Tonka",description:"Fragancia Montale."}
 ];
-
 let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
 let activeCategory = "Todos";
 
