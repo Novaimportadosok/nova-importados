@@ -10,7 +10,7 @@ const INSTAGRAM_URL = "https://instagram.com/nova.importados";
 
 // Agregá, quitá o modificá productos en esta lista.
 const products = [
-      {id:1,name:"Art of Universe",category:"Lattafa",price:72000,image:"https://placehold.co/700x700/f0ede5/333?text=Art+of+Universe",description:"Fragancia seleccionada."},
+      {id:1,name:"Art of Universe",category:"Lattafa",price:72000,price:72000,price2:70000,price3:68000,image:"https://placehold.co/700x700/f0ede5/333?text=Art+of+Universe",description:"Fragancia seleccionada."},
   {id:2,name:"Asad Bourbon",category:"Lattafa",price:70000,image:"https://placehold.co/700x700/f0ede5/333?text=Asad+Bourbon",description:"Fragancia intensa y sofisticada."},
   {id:3,name:"Asad Negro",category:"Lattafa",price:60000,image:"https://placehold.co/700x700/e9eee5/333?text=Asad+Negro",description:"Aroma elegante y de gran presencia."},
   {id:4,name:"Asad Elixir",category:"Lattafa",price:62000,image:"https://placehold.co/700x700/eee8df/333?text=Asad+Elixir",description:"Fragancia intensa y especial."},
