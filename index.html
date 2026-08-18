@@ -33,9 +33,29 @@
     </section>
 
     <section id="productos" class="catalog">
-      <div class="filters" id="filters"></div>
-      <div class="grid" id="productGrid"></div>
-    </section>
+
+  <div class="catalog-tools">
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="🔎 Buscar perfume..."
+      aria-label="Buscar perfume"
+    >
+
+    <select id="sortSelect" aria-label="Ordenar productos">
+      <option value="default">Ordenar por</option>
+      <option value="az">Nombre: A-Z</option>
+      <option value="za">Nombre: Z-A</option>
+      <option value="low">Precio: menor a mayor</option>
+      <option value="high">Precio: mayor a menor</option>
+    </select>
+  </div>
+
+  <div class="filters" id="filters"></div>
+
+  <div class="grid" id="productGrid"></div>
+
+</section>
   </main>
 
   <button class="cart-fab" id="cartButton" aria-label="Abrir carrito">
