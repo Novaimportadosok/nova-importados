@@ -365,3 +365,370 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Nova Importados - Perfumes importados y fragancias."
+  >
+
+  <title>Nova Importados</title>
+
+  <!-- FUENTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ===============================
+       HEADER
+  ================================ -->
+
+  <header class="topbar">
+
+    <a class="brand" href="#">
+      <span>nova</span><b>importados</b>
+    </a>
+
+    <button
+      class="menu"
+      type="button"
+      aria-label="Abrir menú"
+    >
+      ☰
+    </button>
+
+  </header>
+
+
+  <!-- ===============================
+       CONTENIDO PRINCIPAL
+  ================================ -->
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <p class="eyebrow">
+        PERFUMES IMPORTADOS
+      </p>
+
+      <h1>
+        Tu fragancia,<br>
+        <span>tu estilo.</span>
+      </h1>
+
+      <p class="hero-text">
+        Descubrí perfumes seleccionados y elegí tu próximo favorito.
+      </p>
+
+      <a
+        class="primary"
+        href="#productos"
+      >
+        Ver productos
+      </a>
+
+      <a
+        class="instagram"
+        href="#"
+        id="instagramLink"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ◎ &nbsp; @nova.importados
+      </a>
+
+      <div class="benefits">
+
+        <div>
+          ✦ <span>Productos seleccionados</span>
+        </div>
+
+        <div>
+          🚚 <span>Envíos coordinados</span>
+        </div>
+
+        <div>
+          🎁 <span>Ideal para regalar</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===============================
+         CATÁLOGO
+    ================================ -->
+
+    <section
+      id="productos"
+      class="catalog"
+    >
+
+      <!-- BUSCADOR Y ORDEN -->
+
+      <div class="catalog-tools">
+
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="🔎 Buscar perfume..."
+          aria-label="Buscar perfume"
+          autocomplete="off"
+        >
+
+        <select
+          id="sortSelect"
+          aria-label="Ordenar productos"
+        >
+
+          <option value="default">
+            Ordenar por
+          </option>
+
+          <option value="az">
+            Nombre: A-Z
+          </option>
+
+          <option value="za">
+            Nombre: Z-A
+          </option>
+
+          <option value="low">
+            Precio: menor a mayor
+          </option>
+
+          <option value="high">
+            Precio: mayor a menor
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- CATEGORÍAS -->
+
+      <div
+        class="filters"
+        id="filters"
+      ></div>
+
+
+      <!-- ===============================
+           MÁS VENDIDOS
+      ================================ -->
+
+      <section class="best-sellers">
+
+        <div class="section-title">
+
+          <p class="eyebrow">
+            FAVORITOS
+          </p>
+
+          <h2>
+            Más vendidos
+          </h2>
+
+        </div>
+
+        <div
+          class="grid"
+          id="bestSellersGrid"
+        ></div>
+
+      </section>
+
+
+      <!-- ===============================
+           TODOS LOS PRODUCTOS
+      ================================ -->
+
+      <section class="all-products">
+
+        <div class="section-title">
+
+          <p class="eyebrow">
+            CATÁLOGO
+          </p>
+
+          <h2>
+            Todos nuestros perfumes
+          </h2>
+
+        </div>
+
+        <div
+          class="grid"
+          id="productGrid"
+        ></div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+
+  <!-- ===============================
+       BOTÓN DEL CARRITO
+  ================================ -->
+
+  <button
+    class="cart-fab"
+    id="cartButton"
+    type="button"
+    aria-label="Abrir carrito"
+  >
+    🛍️
+
+    <span id="cartCount">
+      0
+    </span>
+
+  </button>
+
+
+  <!-- ===============================
+       BOTÓN WHATSAPP
+  ================================ -->
+
+  <a
+    class="wa-fab"
+    id="waFloat"
+    href="#"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp"
+  >
+    ◔
+  </a>
+
+
+  <!-- ===============================
+       FONDO DEL CARRITO
+  ================================ -->
+
+  <div
+    class="overlay"
+    id="overlay"
+  ></div>
+
+
+  <!-- ===============================
+       CARRITO
+  ================================ -->
+
+  <aside
+    class="cart"
+    id="cartPanel"
+    aria-label="Carrito"
+  >
+
+    <div class="cart-head">
+
+      <h2>
+        Tu carrito
+      </h2>
+
+      <button
+        id="closeCart"
+        type="button"
+        aria-label="Cerrar carrito"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <!-- PRODUCTOS DEL CARRITO -->
+
+    <div
+      id="cartItems"
+      class="cart-items"
+    ></div>
+
+
+    <!-- PARTE INFERIOR -->
+
+    <div class="cart-bottom">
+
+      <div class="shipping-note">
+
+        <strong>
+          📦 Envíos
+        </strong>
+
+        <span>
+          Coordinamos costo y modalidad por WhatsApp.
+        </span>
+
+      </div>
+
+
+      <div class="subtotal">
+
+        <span>
+          Subtotal
+        </span>
+
+        <strong id="subtotal">
+          $ 0
+        </strong>
+
+      </div>
+
+
+      <button
+        class="checkout"
+        id="checkout"
+        type="button"
+      >
+        Finalizar por WhatsApp
+      </button>
+
+
+      <button
+        class="clear"
+        id="clearCart"
+        type="button"
+      >
+        Vaciar carrito
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ===============================
+       JAVASCRIPT
+  ================================ -->
+
+  <!-- defer hace que app.js espere a que cargue el HTML -->
+  <script
+    src="app.js"
+    defer
+  ></script>
+
+</body>
+</html>
