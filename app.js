@@ -88,7 +88,10 @@ const products = [
   {id:68,name:"Jean Paul Gaultier Scandal Pour Homme Absolu Parfum 100ml",category:"Diseñador",price:210000,image:"https://placehold.co/700x700/f0ede5/333?text=Scandal+Absolu",description:"Fragancia Jean Paul Gaultier."},
   {id:69,name:"Emporio Armani Stronger With You Intensely EDP 100ml",category:"Diseñador",price:300000,image:"https://placehold.co/700x700/e9eee5/333?text=Stronger+With+You",description:"Fragancia Emporio Armani."},
   {id:70,name:"Versace Eros Flame EDP 100ml",category:"Diseñador",price:160000,image:"https://placehold.co/700x700/eee8df/333?text=Eros+Flame",description:"Fragancia Versace."},
-  {id:71,name:"Montale Arabians Tonka EDP",category:"Diseñador",price:295000,image:"https://placehold.co/700x700/e5eee7/333?text=Arabians+Tonka",description:"Fragancia Montale."}let cart = JSON.parse(localStorage.getItem("novaCart") || "[]")
+    {id:71,name:"Montale Arabians Tonka EDP",category:"Diseñador",price:295000,image:"https://placehold.co/700x700/e5eee7/333?text=Arabians+Tonka",description:"Fragancia Montale."}
+];
+
+let cart = JSON.parse(localStorage.getItem("novaCart") || "[]");
 let activeCategory = "Todos";
 
 const money = n => "$ " + Number(n).toLocaleString("es-AR");
